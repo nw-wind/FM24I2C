@@ -17,6 +17,7 @@ unsigned long readUnsignedLong(int address) returns unsigned long number stored 
 
 I plan to add some more macros for other data types. They are not consuming the memory because are not function and looks like the follows.
 
+```arduino
 void inline writeUnsignedLong(int addr, unsigned long data) {
       pack(addr, (void*)&data, sizeof(unsigned long));
     } 
@@ -24,9 +25,11 @@ unsigned long inline readUnsignedLong(int addr) {
     unsigned long data;
     return unpack(addr, (void*)&data, sizeof(unsigned long)) == sizeof(unsigned long) ? data : 0UL;
 }
+```
 
 The general purpose of this library was to store any data including structures without any serialization like the follows.
 
+```arduino
 ...
 struct mydata {
   int a;
@@ -38,6 +41,7 @@ fm.pack(0x0100,(void*)&mystr,sizeof(struct mydata));
 ... some code here ...
 fm.unpack(0x0100,(void*)&mystr,sizeof(struct mydata));
 ...
+```
 
 Yours,
 Sergio
