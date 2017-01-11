@@ -43,5 +43,8 @@ fm.unpack(0x0100,(void*)&mystr,sizeof(struct mydata));
 ...
 ```
 
+TODO:
+- Probe i2c if the chip response or not.
+
 Yours,
 Sergio
